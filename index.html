@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phantom Learning</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%234f46e5' rx='6'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='bold'>P</text></svg>" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-gradient"></div>
+    <main class="shell">
+      <header class="shell-header">
+        <div class="traffic-lights">
+          <span class="light red"></span>
+          <span class="light yellow"></span>
+          <span class="light green"></span>
+        </div>
+        <div class="shell-title">Mini Browser</div>
+      </header>
+
+      <section class="content">
+        <h1 class="title">Play a game</h1>
+        <p class="subtitle">Click a game to open it in an about:blank window.</p>
+
+        <div class="games-grid">
+          <button
+            class="game-button"
+            data-game-id="dodge"
+          >
+            <span class="game-title">Square Dodge</span>
+            <span class="game-tagline">Move left &amp; right, avoid falling blocks.</span>
+          </button>
+
+          <button
+            class="game-button"
+            data-game-id="clicker"
+          >
+            <span class="game-title">Circle Clicker</span>
+            <span class="game-tagline">Click the target as many times as you can.</span>
+          </button>
+
+          <button
+            class="game-button"
+            data-game-id="carparking"
+          >
+            <span class="game-title">Car Parking Pro</span>
+            <span class="game-tagline">Open the full game from MadKidGames.</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
