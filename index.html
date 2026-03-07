@@ -14,6 +14,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-screen-bg"></div>
+      <div class="loading-screen-center">
+        <div class="loading-phase" id="loading-phase">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Loading</p>
+          <div class="loading-dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="connected-phase" id="connected-phase" hidden>
+          <span class="connected-text">Connected</span>
+          <div class="connected-line"></div>
+        </div>
+      </div>
+    </div>
     <div class="bg-gradient"></div>
     <main class="shell">
       <header class="shell-header">
@@ -30,15 +44,11 @@
         <h1 class="title title-phantom">Phantom Learning</h1>
         <p class="tagline-intro">This is <span class="tagline-word" id="tagline-word" aria-live="polite">trustworthy</span></p>
         <p class="subtitle">Click a game to open it in an about:blank window.</p>
-        <div id="live-count" class="live-count" aria-live="polite">
-          <span class="live-count-dot" aria-hidden="true"></span>
-          <span class="live-count-label">Today</span>
-          <span class="live-count-badge-wrap">
-            <span class="visitor-count-display" id="visitor-count-display" aria-hidden="true">
-              <span class="visitor-count-number" id="visitor-count-number">—</span>
-              <span class="visitor-count-sublabel">visitors today</span>
-            </span>
-            <img id="visitor-badge" class="live-count-badge" src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fexample.com&amp;type=daily&amp;label=visitors%20today" alt="Visitors today" />
+
+        <div id="email-connect" class="email-connect" hidden>
+          <span class="email-connected-email" id="email-display"></span>
+          <span class="email-connected-badge" id="connected-badge">
+            <span class="email-connected-label">connected</span>
           </span>
         </div>
 

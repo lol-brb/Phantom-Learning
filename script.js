@@ -1,3 +1,25 @@
+// ——— Loading screen → Connected → Website ———
+(function loadingSequence() {
+  var screen = document.getElementById("loading-screen");
+  var loadingPhase = document.getElementById("loading-phase");
+  var connectedPhase = document.getElementById("connected-phase");
+  if (!screen || !loadingPhase || !connectedPhase) return;
+
+  setTimeout(function () {
+    loadingPhase.classList.add("loading-fade-out");
+  }, 2200);
+
+  setTimeout(function () {
+    loadingPhase.hidden = true;
+    connectedPhase.hidden = false;
+    connectedPhase.classList.add("connected-visible");
+  }, 2700);
+
+  setTimeout(function () {
+    screen.classList.add("loading-done");
+  }, 4700);
+})();
+
 const gameButtons = document.querySelectorAll(".game-button");
 
 function getGameHtml(id) {
@@ -430,28 +452,63 @@ if (gameSearchEl) {
 }
 filterGamesBySearch();
 
-// Visitor count (today) from https://visitorbadge.io/
-(function visitorBadge() {
-  var img = document.getElementById("visitor-badge");
-  var numberEl = document.getElementById("visitor-count-number");
-  var wrap = img && img.closest(".live-count-badge-wrap");
-  if (!img || !wrap) return;
-  var origin = window.location.origin;
-  if (origin && origin !== "null" && origin.indexOf("file") !== 0) {
-    var path = encodeURIComponent(origin);
-    var apiUrl = "https://api.visitorbadge.io/api/visitors?path=" + path + "&type=daily&label=visitors%20today";
-    img.src = apiUrl;
-    fetch(apiUrl, { mode: "cors" })
-      .then(function (r) { return r.text(); })
-      .then(function (text) {
-        var m = text && text.match(/:?\s*(\d+)/);
-        var n = m ? m[1] : null;
-        if (n && numberEl) {
-          numberEl.textContent = n;
-          wrap.classList.add("has-number");
-        }
+// ——— Automatically read email from browser, display "*email* connected" ———
+(function emailConnect() {
+  var STORAGE_KEY = "phantom-learning-email";
+  var containerEl = document.getElementById("email-connect");
+  var displayEl = document.getElementById("email-display");
+
+  var hasCredentials = typeof navigator !== "undefined" && navigator.credentials && typeof navigator.credentials.get === "function";
+
+  function getStoredEmail() {
+    try {
+      return localStorage.getItem(STORAGE_KEY) || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function setStoredEmail(email) {
+    try {
+      if (email) localStorage.setItem(STORAGE_KEY, email);
+      else localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {}
+  }
+
+  function showEmail(email) {
+    if (!containerEl || !displayEl) return;
+    displayEl.textContent = "*" + email + "*";
+    containerEl.hidden = false;
+  }
+
+  function hideEmail() {
+    if (containerEl) containerEl.hidden = true;
+  }
+
+  function tryGetEmailSilent() {
+    if (!hasCredentials) return Promise.resolve(null);
+    return navigator.credentials.get({ password: true, mediation: "silent" })
+      .then(function (cred) {
+        if (cred && cred.id) return cred.id;
+        return null;
       })
-      .catch(function () {});
+      .catch(function () { return null; });
+  }
+
+  var saved = getStoredEmail();
+  if (saved) {
+    showEmail(saved);
+  } else if (hasCredentials) {
+    tryGetEmailSilent().then(function (email) {
+      if (email) {
+        setStoredEmail(email);
+        showEmail(email);
+      } else {
+        hideEmail();
+      }
+    }).catch(hideEmail);
+  } else {
+    hideEmail();
   }
 })();
 
