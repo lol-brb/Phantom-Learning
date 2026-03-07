@@ -23,41 +23,35 @@
           <span class="light green"></span>
         </div>
         <div class="shell-title" id="shell-title">Mini Browser</div>
-        <button type="button" id="settings-btn" class="settings-btn" aria-label="Settings" title="Settings">⚙</button>
+        <a href="learn.html" class="hide-btn" id="hide-btn" aria-label="Hide" title="Hide">Hide</a>
       </header>
-
-      <div id="settings-overlay" class="settings-overlay" aria-hidden="true">
-        <div class="settings-panel">
-          <div class="settings-header">
-            <h2 class="settings-title">Settings</h2>
-            <button type="button" id="settings-close" class="settings-close" aria-label="Close">×</button>
-          </div>
-          <div class="settings-body">
-            <fieldset class="settings-group">
-              <legend class="settings-legend">Color theme</legend>
-              <div class="settings-options">
-                <label class="settings-option"><input type="radio" name="theme" value="dark" checked /> Dark</label>
-                <label class="settings-option"><input type="radio" name="theme" value="light" /> Light</label>
-                <label class="settings-option"><input type="radio" name="theme" value="blue" /> Blue</label>
-                <label class="settings-option"><input type="radio" name="theme" value="green" /> Green</label>
-              </div>
-            </fieldset>
-            <fieldset class="settings-group">
-              <legend class="settings-legend">Layout</legend>
-              <div class="settings-options">
-                <label class="settings-option"><input type="radio" name="layout" value="2" /> 2 columns</label>
-                <label class="settings-option"><input type="radio" name="layout" value="3" checked /> 3 columns</label>
-                <label class="settings-option"><input type="radio" name="layout" value="4" /> 4 columns</label>
-              </div>
-            </fieldset>
-          </div>
-        </div>
-      </div>
 
       <section class="content content-games">
         <h1 class="title title-phantom">Phantom Learning</h1>
         <p class="tagline-intro">This is <span class="tagline-word" id="tagline-word" aria-live="polite">trustworthy</span></p>
         <p class="subtitle">Click a game to open it in an about:blank window.</p>
+        <div id="live-count" class="live-count" aria-live="polite">
+          <span class="live-count-dot" aria-hidden="true"></span>
+          <span class="live-count-label">Today</span>
+          <span class="live-count-badge-wrap">
+            <span class="visitor-count-display" id="visitor-count-display" aria-hidden="true">
+              <span class="visitor-count-number" id="visitor-count-number">—</span>
+              <span class="visitor-count-sublabel">visitors today</span>
+            </span>
+            <img id="visitor-badge" class="live-count-badge" src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fexample.com&amp;type=daily&amp;label=visitors%20today" alt="Visitors today" />
+          </span>
+        </div>
+
+        <label for="game-search" class="search-label">Search games</label>
+        <input
+          type="search"
+          id="game-search"
+          class="game-search"
+          placeholder="Type to filter games…"
+          autocomplete="off"
+          aria-label="Search games"
+        />
+        <p id="game-count" class="game-count" aria-live="polite"></p>
 
         <div class="games-grid">
           <button
@@ -76,129 +70,11 @@
             <span class="game-tagline">Click the target as many times as you can.</span>
           </button>
 
-          <button
-            class="game-button"
-            data-game-id="carparking"
-          >
-            <span class="game-title">Car Parking Pro</span>
-            <span class="game-tagline">Open the full game from MadKidGames.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="tetrix"
-          >
-            <span class="game-title">Tetrix 3D</span>
-            <span class="game-tagline">3D tetris-style block puzzle.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="brainrot"
-          >
-            <span class="game-title">Steal a Brainrot</span>
-            <span class="game-tagline">Obby steal-a-memerots style game.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="stickman"
-          >
-            <span class="game-title">Stickman Hook</span>
-            <span class="game-tagline">Swing and hook your way through.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="bottleflip"
-          >
-            <span class="game-title">Bottle Flip</span>
-            <span class="game-tagline">Flip the bottle and land it.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="slope"
-          >
-            <span class="game-title">Slope</span>
-            <span class="game-tagline">Roll down the 3D slope and don't fall off.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="2048"
-          >
-            <span class="game-title">2048</span>
-            <span class="game-tagline">Join the numbers and get to the 2048 tile.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="mario"
-          >
-            <span class="game-title">Super Mario Bros</span>
-            <span class="game-tagline">Classic NES Mario (Japan/USA).</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="mariokart64"
-          >
-            <span class="game-title">Mario Kart 64</span>
-            <span class="game-tagline">N64 Mario Kart (USA).</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="linerider"
-          >
-            <span class="game-title">Line Rider</span>
-            <span class="game-tagline">Draw tracks and watch the rider go.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="geometrydash"
-          >
-            <span class="game-title">Geometry Dash</span>
-            <span class="game-tagline">Scratch rhythm platformer.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="amongus"
-          >
-            <span class="game-title">Among Us Online</span>
-            <span class="game-tagline">Crewmates vs impostors in space.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="minecraft"
-          >
-            <span class="game-title">Minecraft Classic</span>
-            <span class="game-tagline">Build and explore in your browser.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="snowrider"
-          >
-            <span class="game-title">Snow Rider 3D</span>
-            <span class="game-tagline">Ski down the slopes in 3D.</span>
-          </button>
-
-          <button
-            class="game-button"
-            data-game-id="helixjump"
-          >
-            <span class="game-title">Helix Jump</span>
-            <span class="game-tagline">Bounce down the helix and avoid the red.</span>
-          </button>
-        </div>
+          </div>
       </section>
     </main>
 
+    <script src="ugs-games-list.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

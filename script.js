@@ -3,321 +3,13 @@ const gameButtons = document.querySelectorAll(".game-button");
 function getGameHtml(id) {
   const scriptClose = "</scr" + "ipt>";
   switch (id) {
-    case "tetrix":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #fff; }
-      div { height: 100%; width: 100%; }
-    </style>
-  </head>
-  <body>
-    <div><script src="https://cdn.htmlgames.com/embed.js?game=Tetrix3D&amp;bgcolor=white">${scriptClose}</div>
-  </body>
-</html>`;
-    case "brainrot":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://html5.gamemonetize.co/hlosul26ikds620fydnpi3nmsb367uv8/" title="Steal a Brainrot" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "stickman":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://html5.gamemonetize.co/x3axo95l28dooujainl5kfjrib9dklth/" title="Stickman Hooks" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "bottleflip":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://html5.gamemonetize.co/1zbs0j6e29n7jeobrg5ih1g16agjqv7w/" title="Bottle Flip Game" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "slope":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://storage.y8.com/y8-studio/unity/joll/slope/?key=9757549&amp;value=80527" title="Slope" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "2048":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://funhtml5games.com?embed=2048bit" title="2048" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "mario":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://www.retrogames.cc/embed/16843-super-mario-bros-japan-usa.html" title="Super Mario Bros (Japan, USA)" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "mariokart64":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://www.retrogames.cc/embed/32603-mario-kart-64-usa.html" title="Mario Kart 64 (USA)" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "linerider":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://games.crazygames.com/en_US/line-rider/index.html" title="Line Rider" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "geometrydash":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://scratch.mit.edu/projects/105500895/embed" title="Geometry Dash" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "amongus":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://skribblio.online/among-us-online-edition" title="Among Us Online Edition" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "minecraft":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://classic.minecraft.net/" title="Minecraft Classic" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "snowrider":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://games.crazygames.com/en_US/snow-rider-3d/index.html" title="Snow Rider 3D" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "helixjump":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: #000; }
-      iframe { border: none; width: 100%; height: 100%; display: block; }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://games.crazygames.com/en_US/helix-jump/index.html" title="Helix Jump" allowfullscreen></iframe>
-  </body>
-</html>`;
-    case "carparking":
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        background: #000;
-        color: #e5e7eb;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        display: flex;
-        flex-direction: column;
-      }
-      .frame-wrap {
-        flex: 1;
-        min-height: 0;
-      }
-      iframe {
-        border: none;
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-      .game-credit {
-        margin: 6px 0 8px;
-        font-size: 13px;
-        line-height: 1.4;
-        text-align: center;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
-      .game-credit a {
-        color: #60a5fa;
-        text-decoration: none;
-      }
-      .game-credit a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="frame-wrap">
-      <iframe
-        src="https://www.madkidgames.com/game/car-parking-pro-park-and-drive"
-        title="Car Parking Pro Park And Drive"
-        loading="lazy"
-        allowfullscreen
-      ></iframe>
-    </div>
-
-    <p class="game-credit">
-      <a href="https://www.madkidgames.com/game/car-parking-pro-park-and-drive" target="_blank" rel="noopener noreferrer">
-        Play Car Parking Pro Park And Drive
-      </a>
-    </p>
-
-    <noscript>
-      <p class="game-credit">
-        <a href="https://www.madkidgames.com/game/car-parking-pro-park-and-drive" target="_blank" rel="noopener noreferrer">
-          Play Car Parking Pro Park And Drive
-        </a>
-      </p>
-    </noscript>
-  </body>
-</html>`;
     case "dodge":
       return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
+    <title>Realtime Student Portal</title>
     <style>
       html, body {
         margin: 0;
@@ -483,7 +175,7 @@ function getGameHtml(id) {
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
+    <title>Realtime Student Portal</title>
     <style>
       html, body {
         margin: 0;
@@ -626,147 +318,8 @@ function getGameHtml(id) {
     </script>
   </body>
 </html>`;
-    case "paddle":
     default:
-      return `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%232d3748' d='M8 11L24 11L22 15L10 15Z'/><path fill='%232d3748' d='M10 15L22 15L21 17L11 17Z'/><line x1='24' y1='11' x2='24' y2='20' stroke='%232d3748' stroke-width='1.5'/><circle cx='24' cy='13' r='1.2' fill='%232d3748'/><path fill='%232d3748' d='M23 20l1 4 2-1-1-3z'/></svg>" />
-    <title>DeltaMath</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        background: #020617;
-        color: #e5e7eb;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      canvas {
-        background: #020617;
-        border-radius: 16px;
-        border: 1px solid #1f2937;
-        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
-      }
-      .hud {
-        position: fixed;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(15, 23, 42, 0.9);
-        border-radius: 999px;
-        padding: 4px 12px;
-        font-size: 13px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="hud">Move your mouse to control the paddle. Keep the ball up.</div>
-    <canvas id="game" width="480" height="420"></canvas>
-    <script>
-      const canvas = document.getElementById("game");
-      const ctx = canvas.getContext("2d");
-      const w = canvas.width;
-      const h = canvas.height;
-
-      const paddle = { width: 80, height: 12, x: w / 2 - 40, y: h - 40 };
-      const ball = { x: w / 2, y: h / 2, r: 8, vx: 3, vy: -3.2 };
-      let hits = 0;
-      let running = true;
-
-      canvas.addEventListener("mousemove", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        paddle.x = x - paddle.width / 2;
-        paddle.x = Math.max(10, Math.min(w - paddle.width - 10, paddle.x));
-      });
-
-      canvas.addEventListener("click", () => {
-        if (!running) {
-          ball.x = w/2;
-          ball.y = h/2;
-          ball.vx = 3;
-          ball.vy = -3.2;
-          hits = 0;
-          running = true;
-        }
-      });
-
-      function loop() {
-        requestAnimationFrame(loop);
-        ctx.fillStyle = "#020617";
-        ctx.fillRect(0, 0, w, h);
-
-        if (running) {
-          ball.x += ball.vx;
-          ball.y += ball.vy;
-
-          if (ball.x - ball.r < 4 || ball.x + ball.r > w - 4) ball.vx *= -1;
-          if (ball.y - ball.r < 4) ball.vy *= -1;
-
-          if (
-            ball.y + ball.r >= paddle.y &&
-            ball.y - ball.r <= paddle.y + paddle.height &&
-            ball.x >= paddle.x &&
-            ball.x <= paddle.x + paddle.width &&
-            ball.vy > 0
-          ) {
-            ball.vy *= -1;
-            const hitPos = (ball.x - paddle.x) / paddle.width - 0.5;
-            ball.vx += hitPos * 2.5;
-            hits++;
-          }
-
-          if (ball.y - ball.r > h + 10) {
-            running = false;
-          }
-        }
-
-        ctx.fillStyle = "#1f2937";
-        ctx.fillRect(0, h - 24, w, 24);
-
-        ctx.fillStyle = "#60a5fa";
-        ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
-
-        const grad = ctx.createRadialGradient(ball.x, ball.y, 2, ball.x, ball.y, ball.r);
-        grad.addColorStop(0, "#f97316");
-        grad.addColorStop(1, "#7c2d12");
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = "#9ca3af";
-        ctx.font = "14px system-ui";
-        ctx.textAlign = "left";
-        ctx.fillText("Hits: " + hits, 10, 22);
-
-        if (!running) {
-          ctx.fillStyle = "rgba(15,23,42,0.92)";
-          ctx.fillRect(60, h/2 - 60, w - 120, 120);
-          ctx.strokeStyle = "#4b5563";
-          ctx.strokeRect(60, h/2 - 60, w - 120, 120);
-          ctx.fillStyle = "#e5e7eb";
-          ctx.textAlign = "center";
-          ctx.font = "20px system-ui";
-          ctx.fillText("You missed!", w/2, h/2 - 18);
-          ctx.font = "14px system-ui";
-          ctx.fillStyle = "#9ca3af";
-          ctx.fillText("Total hits: " + hits, w/2, h/2 + 6);
-          ctx.fillText("Click to play again", w/2, h/2 + 30);
-        }
-      }
-
-      loop();
-    </script>
-  </body>
-</html>`;
+      return null;
   }
 }
 
@@ -780,18 +333,127 @@ function openGameById(id) {
     popup.document.write(html);
     popup.document.close();
   } else {
-    // Fallback: run the game in this tab if pop-ups are blocked
     document.open();
     document.write(html);
     document.close();
   }
 }
 
-gameButtons.forEach((button) => {
-  const id = button.getAttribute("data-game-id");
-  if (!id) return;
-  button.addEventListener("click", () => openGameById(id));
-});
+function openUgsGame(fileId) {
+  var name = fileId;
+  if (name.indexOf(".") === -1) name = name + ".html";
+  var url = "https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile/UGS-Files/" + encodeURIComponent(name) + "?t=" + Date.now();
+  var popup = window.open("about:blank", "_blank");
+  if (!popup) return;
+  fetch(url)
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
+      popup.document.open();
+      popup.document.write(text);
+      popup.document.close();
+      popup.document.title = "Realtime Student Portal";
+    })
+    .catch(function() {
+      popup.document.open();
+      popup.document.write("<html><head><title>Realtime Student Portal</title></head><body><p>Failed to load game. Check the console.</p></body></html>");
+      popup.document.close();
+    });
+}
+
+var gamesGrid = document.querySelector(".games-grid");
+if (gamesGrid) {
+  gamesGrid.addEventListener("click", function(e) {
+    var btn = e.target.closest(".game-button");
+    if (!btn) return;
+    var id = btn.getAttribute("data-game-id");
+    if (!id) return;
+    if (id.indexOf("ugs:") === 0) {
+      openUgsGame(id.slice(4));
+    } else {
+      openGameById(id);
+    }
+  });
+}
+
+function formatUgsTitle(fileId) {
+  var s = fileId.indexOf("cl") === 0 ? fileId.slice(2) : fileId;
+  s = s.replace(/([a-z])([0-9])/gi, "$1 $2").replace(/([0-9])([a-zA-Z])/g, "$1 $2");
+  s = s.replace(/([a-z])([A-Z])/g, "$1 $2");
+  return s.replace(/\b\w/g, function(c) { return c.toUpperCase(); }).trim();
+}
+
+function addUgsGameButton(fileId) {
+  var title = formatUgsTitle(fileId);
+  if (title.length > 32) title = title.slice(0, 29) + "...";
+  var btn = document.createElement("button");
+  btn.className = "game-button";
+  btn.setAttribute("data-game-id", "ugs:" + fileId);
+  btn.innerHTML = "<span class=\"game-title\">" + title + "</span>\n            <span class=\"game-tagline\">Open in new tab.</span>";
+  gamesGrid.appendChild(btn);
+}
+
+var ugsList = typeof window.UGS_FILES !== "undefined" && window.UGS_FILES;
+if (ugsList && Array.isArray(ugsList)) {
+  ugsList.forEach(function(fileId) {
+    if (fileId && typeof fileId === "string") addUgsGameButton(fileId);
+  });
+}
+
+function filterGamesBySearch() {
+  var searchEl = document.getElementById("game-search");
+  var countEl = document.getElementById("game-count");
+  var q = (searchEl && searchEl.value) ? searchEl.value.trim().toLowerCase() : "";
+  var buttons = document.querySelectorAll(".games-grid .game-button");
+  var total = buttons.length;
+  var visible = 0;
+  buttons.forEach(function(btn) {
+    var titleEl = btn.querySelector(".game-title");
+    var taglineEl = btn.querySelector(".game-tagline");
+    var text = ((titleEl && titleEl.textContent) || "") + " " + ((taglineEl && taglineEl.textContent) || "");
+    var match = !q || text.toLowerCase().indexOf(q) !== -1;
+    btn.classList.toggle("search-hidden", !match);
+    if (match) visible++;
+  });
+  if (countEl) {
+    if (q && visible !== total) {
+      countEl.textContent = "Showing " + visible + " of " + total.toLocaleString() + " games";
+    } else {
+      countEl.textContent = total.toLocaleString() + " game" + (total === 1 ? "" : "s");
+    }
+  }
+}
+
+var gameSearchEl = document.getElementById("game-search");
+if (gameSearchEl) {
+  gameSearchEl.addEventListener("input", filterGamesBySearch);
+  gameSearchEl.addEventListener("search", filterGamesBySearch);
+}
+filterGamesBySearch();
+
+// Visitor count (today) from https://visitorbadge.io/
+(function visitorBadge() {
+  var img = document.getElementById("visitor-badge");
+  var numberEl = document.getElementById("visitor-count-number");
+  var wrap = img && img.closest(".live-count-badge-wrap");
+  if (!img || !wrap) return;
+  var origin = window.location.origin;
+  if (origin && origin !== "null" && origin.indexOf("file") !== 0) {
+    var path = encodeURIComponent(origin);
+    var apiUrl = "https://api.visitorbadge.io/api/visitors?path=" + path + "&type=daily&label=visitors%20today";
+    img.src = apiUrl;
+    fetch(apiUrl, { mode: "cors" })
+      .then(function (r) { return r.text(); })
+      .then(function (text) {
+        var m = text && text.match(/:?\s*(\d+)/);
+        var n = m ? m[1] : null;
+        if (n && numberEl) {
+          numberEl.textContent = n;
+          wrap.classList.add("has-number");
+        }
+      })
+      .catch(function () {});
+  }
+})();
 
 // "This is [word]" — rotating word with cool styling
 const taglineWordEl = document.getElementById("tagline-word");
@@ -814,80 +476,3 @@ if (taglineWordEl) {
     }, 250);
   }, 2200);
 }
-
-// Settings: theme & layout (persisted in localStorage)
-const SETTINGS_KEY = "phantom-learning-settings";
-
-function getSettings() {
-  try {
-    const s = localStorage.getItem(SETTINGS_KEY);
-    return s ? JSON.parse(s) : { theme: "dark", layout: "3" };
-  } catch {
-    return { theme: "dark", layout: "3" };
-  }
-}
-
-function saveSettings(theme, layout) {
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify({ theme, layout }));
-}
-
-function applySettings(theme, layout) {
-  document.body.classList.remove("theme-dark", "theme-light", "theme-blue", "theme-green");
-  document.body.classList.add("theme-" + (theme || "dark"));
-  document.body.classList.remove("layout-cols-2", "layout-cols-3", "layout-cols-4");
-  document.body.classList.add("layout-cols-" + (layout || "3"));
-}
-
-const settingsBtn = document.getElementById("settings-btn");
-const settingsOverlay = document.getElementById("settings-overlay");
-const settingsClose = document.getElementById("settings-close");
-const themeRadios = document.querySelectorAll('input[name="theme"]');
-const layoutRadios = document.querySelectorAll('input[name="layout"]');
-
-if (settingsBtn && settingsOverlay) {
-  settingsBtn.addEventListener("click", () => {
-    settingsOverlay.classList.add("open");
-    settingsOverlay.setAttribute("aria-hidden", "false");
-  });
-}
-
-if (settingsClose && settingsOverlay) {
-  settingsClose.addEventListener("click", () => {
-    settingsOverlay.classList.remove("open");
-    settingsOverlay.setAttribute("aria-hidden", "true");
-  });
-}
-
-if (settingsOverlay) {
-  settingsOverlay.addEventListener("click", (e) => {
-    if (e.target === settingsOverlay) {
-      settingsOverlay.classList.remove("open");
-      settingsOverlay.setAttribute("aria-hidden", "true");
-    }
-  });
-}
-
-themeRadios.forEach((radio) => {
-  radio.addEventListener("change", () => {
-    const layout = document.querySelector('input[name="layout"]:checked')?.value || "3";
-    saveSettings(radio.value, layout);
-    applySettings(radio.value, layout);
-  });
-});
-
-layoutRadios.forEach((radio) => {
-  radio.addEventListener("change", () => {
-    const theme = document.querySelector('input[name="theme"]:checked')?.value || "dark";
-    saveSettings(theme, radio.value);
-    applySettings(theme, radio.value);
-  });
-});
-
-// Apply saved settings on load
-const saved = getSettings();
-applySettings(saved.theme, saved.layout);
-const themeChecked = document.querySelector('input[name="theme"][value="' + saved.theme + '"]');
-const layoutChecked = document.querySelector('input[name="layout"][value="' + saved.layout + '"]');
-if (themeChecked) themeChecked.checked = true;
-if (layoutChecked) layoutChecked.checked = true;
-

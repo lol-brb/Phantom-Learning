@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        var path = location.pathname.replace(/\/[^/]*$/, '/') || '/';
+        document.write('<base href="' + location.origin + path + '">');
+      })();
+    </script>
+    <title>Phantom Learning</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%234f46e5' rx='6'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='bold'>P</text></svg>" />
+    <style>
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      .learn-home { display: block; }
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
+        color: #1e3a8a;
+      }
+      .learn-header {
+        background: linear-gradient(90deg, #1d4ed8, #2563eb);
+        color: #fff;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(29, 78, 216, 0.3);
+      }
+      .learn-header h1 {
+        margin: 0;
+        font-size: 1.35rem;
+        font-weight: 600;
+      }
+      .learn-header .learn-subtitle {
+        margin: 2px 0 0 0;
+        font-size: 0.85rem;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+      .show-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1d4ed8;
+        background: #fff;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        transition: background 0.2s, transform 0.1s;
+      }
+      .show-btn:hover {
+        background: #eff6ff;
+        transform: translateY(-1px);
+      }
+      .learn-main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 32px 24px;
+      }
+      .learn-hero {
+        text-align: center;
+        margin-bottom: 36px;
+      }
+      .learn-hero h2 {
+        font-size: 1.75rem;
+        color: #1e40af;
+        margin: 0 0 8px 0;
+      }
+      .learn-hero p {
+        color: #3b82f6;
+        margin: 0;
+        font-size: 1.05rem;
+      }
+      .subject-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+      }
+      .subject-card {
+        background: #fff;
+        border: 1px solid #bfdbfe;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        color: #1e40af;
+        font-weight: 600;
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+        transition: box-shadow 0.2s, border-color 0.2s;
+      }
+      .subject-card:hover {
+        border-color: #93c5fd;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+      }
+      .subject-card span {
+        display: block;
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      .learn-footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid #bfdbfe;
+        color: #64748b;
+        font-size: 14px;
+      }
+      .subject-section {
+        display: none;
+        background: #fff;
+        border: 1px solid #bfdbfe;
+        border-radius: 12px;
+        padding: 28px 24px;
+        margin-bottom: 28px;
+        box-shadow: 0 2px 12px rgba(37, 99, 235, 0.08);
+      }
+      .subject-section.is-open {
+        display: block;
+      }
+      body.subject-open .learn-home {
+        display: none;
+      }
+      .subject-section h2 {
+        color: #1e40af;
+        margin: 0 0 16px 0;
+        font-size: 1.5rem;
+      }
+      .subject-section .back-link {
+        display: inline-block;
+        margin-bottom: 16px;
+        font-size: 14px;
+        color: #2563eb;
+        text-decoration: none;
+      }
+      .subject-section .back-link:hover {
+        text-decoration: underline;
+      }
+      .subject-section p, .subject-section li {
+        color: #334155;
+        line-height: 1.6;
+        margin: 0 0 12px 0;
+      }
+      .subject-section ul {
+        margin: 0 0 16px 0;
+        padding-left: 24px;
+      }
+      .subject-section .key-term {
+        font-weight: 600;
+        color: #1e40af;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="learn-header">
+      <div>
+        <h1>Phantom Learning</h1>
+        <p class="learn-subtitle">7th Grade Learning Portal</p>
+      </div>
+      <a href="index.html" class="show-btn" id="show-btn">Show</a>
+    </header>
+
+    <main class="learn-main">
+      <div class="learn-home">
+        <div class="learn-hero">
+          <h2>Welcome to Middle School Learning</h2>
+          <p>Choose a subject to explore resources and practice.</p>
+        </div>
+
+        <div class="subject-grid" id="subjects">
+          <a href="#math" class="subject-card" data-subject="math"><span>📐</span> Math</a>
+          <a href="#science" class="subject-card" data-subject="science"><span>🔬</span> Science</a>
+          <a href="#ela" class="subject-card" data-subject="ela"><span>📖</span> ELA</a>
+          <a href="#social-studies" class="subject-card" data-subject="social-studies"><span>🌍</span> Social Studies</a>
+          <a href="#technology" class="subject-card" data-subject="technology"><span>💻</span> Technology</a>
+        </div>
+      </div>
+
+      <section class="subject-section" id="math">
+        <a href="#" class="back-link" data-back>← Back to subjects</a>
+        <h2>📐 Math</h2>
+        <p><span class="key-term">Ratios and proportional relationships</span> — In 7th grade you work with ratios, unit rates, and proportions. You use them to solve real-world problems like scaling recipes or comparing prices.</p>
+        <p><span class="key-term">Expressions and equations</span> — You simplify expressions, solve multi-step equations, and graph linear equations. For example: solve for <em>x</em> when 2<em>x</em> + 5 = 15.</p>
+        <p><span class="key-term">Geometry</span> — You find area and circumference of circles, area and surface area of 2D and 3D shapes, and use the formulas &pi;<em>r</em>&sup2; and 2&pi;<em>r</em>.</p>
+        <ul>
+          <li>Practice: Draw a circle with radius 5 cm. Find its area and circumference.</li>
+          <li>Practice: Solve 3(<em>x</em> &minus; 2) = 12.</li>
+        </ul>
+      </section>
+
+      <section class="subject-section" id="science">
+        <a href="#" class="back-link" data-back>← Back to subjects</a>
+        <h2>🔬 Science</h2>
+        <p><span class="key-term">Life science</span> — You study cells, heredity, and how organisms interact with their environment. You learn that cells are the basic unit of life and that traits are passed from parents to offspring through genes.</p>
+        <p><span class="key-term">Earth and space science</span> — You explore the rock cycle, plate tectonics, and Earth’s place in the solar system. You learn how weathering and erosion shape the land and how the seasons are caused by Earth’s tilt.</p>
+        <p><span class="key-term">Physical science</span> — You learn about matter, energy, and forces. Topics include chemical reactions, motion, and simple machines.</p>
+        <ul>
+          <li>Key idea: The scientific method — ask a question, form a hypothesis, run an experiment, and draw conclusions.</li>
+        </ul>
+      </section>
+
+      <section class="subject-section" id="ela">
+        <a href="#" class="back-link" data-back>← Back to subjects</a>
+        <h2>📖 ELA (English Language Arts)</h2>
+        <p><span class="key-term">Reading</span> — You analyze fiction and nonfiction: theme, central idea, author’s purpose, and evidence from the text. You compare how different authors present similar ideas.</p>
+        <p><span class="key-term">Writing</span> — You write arguments with clear claims and evidence, informative essays that explain a topic, and narratives that use dialogue and description. You revise and edit for clarity and conventions.</p>
+        <p><span class="key-term">Language</span> — You use commas and semicolons correctly, understand phrases and clauses, and choose precise words. You also study Greek and Latin roots to build vocabulary.</p>
+        <ul>
+          <li>Tip: When answering a question about a passage, always cite evidence from the text.</li>
+        </ul>
+      </section>
+
+      <section class="subject-section" id="social-studies">
+        <a href="#" class="back-link" data-back>← Back to subjects</a>
+        <h2>🌍 Social Studies</h2>
+        <p><span class="key-term">World history</span> — You study ancient civilizations, the rise of empires, and how trade and ideas spread. You look at primary and secondary sources to understand the past.</p>
+        <p><span class="key-term">Civics and government</span> — You learn how governments are organized, the idea of democracy, and the rights and responsibilities of citizens. You discuss how laws are made and why they matter.</p>
+        <p><span class="key-term">Geography</span> — You use maps and tools to understand location, climate, and how geography affects how people live. You compare regions and explain why they differ.</p>
+        <ul>
+          <li>Key skill: Distinguish between fact and opinion in sources.</li>
+        </ul>
+      </section>
+
+      <section class="subject-section" id="technology">
+        <a href="#" class="back-link" data-back>← Back to subjects</a>
+        <h2>💻 Technology</h2>
+        <p><span class="key-term">Digital citizenship</span> — You learn to use the internet safely and responsibly: privacy, passwords, and how to tell real information from misinformation online.</p>
+        <p><span class="key-term">Computer basics</span> — You understand hardware (CPU, memory, storage) and software. You use word processors, spreadsheets, and presentations for school projects.</p>
+        <p><span class="key-term">Coding and problem-solving</span> — You use logic and step-by-step thinking to solve problems. You may use block-based or text-based coding to create simple programs and understand sequences, loops, and conditionals.</p>
+        <ul>
+          <li>Practice: Plan the steps to solve a problem before you start coding.</li>
+        </ul>
+      </section>
+
+      <footer class="learn-footer">
+        Phantom Learning · 7th Grade Learning Portal · Educational resources for middle school.
+      </footer>
+    </main>
+    <script>
+      (function() {
+        var sections = document.querySelectorAll(".subject-section");
+        var home = document.querySelector(".learn-home");
+        var body = document.body;
+
+        function openSubject(id) {
+          sections.forEach(function(s) {
+            s.classList.toggle("is-open", s.id === id);
+          });
+          body.classList.add("subject-open");
+        }
+
+        function closeSubject() {
+          sections.forEach(function(s) { s.classList.remove("is-open"); });
+          body.classList.remove("subject-open");
+        }
+
+        document.querySelectorAll(".subject-card").forEach(function(card) {
+          card.addEventListener("click", function(e) {
+            e.preventDefault();
+            openSubject(card.getAttribute("data-subject"));
+          });
+        });
+
+        document.querySelectorAll(".back-link[data-back]").forEach(function(link) {
+          link.addEventListener("click", function(e) {
+            e.preventDefault();
+            closeSubject();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
