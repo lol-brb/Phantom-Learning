@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
       (function() {
         var path = location.pathname.replace(/\/[^/]*$/, '/') || '/';
@@ -17,7 +18,16 @@
     <div id="loading-screen" class="loading-screen">
       <div class="loading-screen-bg"></div>
       <div class="loading-screen-center">
-        <div class="loading-phase" id="loading-phase">
+        <div class="google-login-phase" id="google-login-phase">
+          <div class="google-login-card">
+            <p class="google-login-title">Sign in with Google</p>
+            <button type="button" id="google-login-btn" class="google-login-btn">
+              <span class="google-login-icon"></span>
+              <span class="google-login-label">Continue with Google</span>
+            </button>
+          </div>
+        </div>
+        <div class="loading-phase" id="loading-phase" hidden>
           <div class="loading-spinner"></div>
           <p class="loading-text">Loading</p>
           <div class="loading-dots"><span></span><span></span><span></span></div>
