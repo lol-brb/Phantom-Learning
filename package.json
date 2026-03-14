@@ -1,9 +1,8 @@
 {
   "name": "phantom-learning",
   "version": "1.0.0",
-  "description": "Static Phantom Learning page with loading + Google sign-in",
+  "description": "Static Phantom Learning page",
   "scripts": {
     "push": "git add . && git commit -m \"auto: update\" && git push"
   }
 }
-

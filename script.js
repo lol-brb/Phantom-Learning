@@ -1,11 +1,33 @@
-// ——— Loading screen → Loading → Connected → Website ———
+// ——— Loading screen → Loading → Sign-in button → Connected → Website ———
 (function loadingSequence() {
+  var REDIRECT_KEY = "phantom-from-redirect";
   var screen = document.getElementById("loading-screen");
   var loadingPhase = document.getElementById("loading-phase");
+  var signinPhase = document.getElementById("signin-phase");
   var connectedPhase = document.getElementById("connected-phase");
   if (!screen || !loadingPhase || !connectedPhase) return;
 
   connectedPhase.hidden = true;
+  if (signinPhase) signinPhase.hidden = true;
+
+  function goToConnectedThenDone() {
+    loadingPhase.hidden = true;
+    if (signinPhase) signinPhase.hidden = true;
+    connectedPhase.hidden = false;
+    connectedPhase.classList.add("connected-visible");
+    setTimeout(function () {
+      screen.classList.add("loading-done");
+      showPoliciesPopupIfNeeded();
+    }, 2000);
+  }
+
+  try {
+    if (localStorage.getItem(REDIRECT_KEY)) {
+      localStorage.removeItem(REDIRECT_KEY);
+      goToConnectedThenDone();
+      return;
+    }
+  } catch (e) {}
 
   setTimeout(function () {
     loadingPhase.classList.add("loading-fade-out");
@@ -13,14 +35,92 @@
 
   setTimeout(function () {
     loadingPhase.hidden = true;
-    connectedPhase.hidden = false;
-    connectedPhase.classList.add("connected-visible");
+    if (signinPhase) {
+      signinPhase.hidden = false;
+    } else {
+      connectedPhase.hidden = false;
+      connectedPhase.classList.add("connected-visible");
+    }
   }, 2700);
 
   setTimeout(function () {
+    if (signinPhase && !signinPhase.hidden) {
+      signinPhase.hidden = true;
+    }
+    connectedPhase.hidden = false;
+    connectedPhase.classList.add("connected-visible");
+  }, 4000);
+
+  setTimeout(function () {
     screen.classList.add("loading-done");
+    showPoliciesPopupIfNeeded();
   }, 4700);
 })();
+
+// ——— Policies popup (once per visit / acknowledged) ———
+function showPoliciesPopupIfNeeded() {
+  var POLICIES_KEY = "phantom-policies-ack";
+  var overlay = document.getElementById("policies-overlay");
+  var continueBtn = document.getElementById("policies-continue");
+  var backdrop = overlay && overlay.querySelector(".policies-backdrop");
+  if (!overlay || !continueBtn) return;
+
+  function closeAndMaybeDailySummary() {
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+    try { localStorage.setItem(POLICIES_KEY, "1"); } catch (e) {}
+    showDailySummaryIfNeeded();
+  }
+
+  try {
+    if (localStorage.getItem(POLICIES_KEY)) {
+      showDailySummaryIfNeeded();
+      return;
+    }
+  } catch (e) {}
+
+  overlay.classList.add("is-open");
+  overlay.setAttribute("aria-hidden", "false");
+  continueBtn.addEventListener("click", closeAndMaybeDailySummary, { once: true });
+  if (backdrop) backdrop.addEventListener("click", closeAndMaybeDailySummary, { once: true });
+}
+
+// ——— Daily AI Summary popup (once per day) ———
+function showDailySummaryIfNeeded() {
+  var overlay = document.getElementById("daily-summary-overlay");
+  var closeBtn = document.getElementById("daily-summary-close");
+  var dateEl = document.getElementById("daily-summary-date");
+  if (!overlay || !closeBtn) return;
+
+  var KEY = "phantom-daily-summary-seen";
+  var today = new Date().toDateString();
+
+  function markSeen() {
+    try { localStorage.setItem(KEY, today); } catch (e) {}
+  }
+
+  function openPopup() {
+    overlay.classList.add("is-open");
+    overlay.setAttribute("aria-hidden", "false");
+    if (dateEl) dateEl.textContent = "Summary for " + today;
+    markSeen();
+  }
+
+  function closePopup() {
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden", "true");
+  }
+
+  try {
+    var lastSeen = localStorage.getItem(KEY);
+    if (lastSeen !== today) openPopup();
+  } catch (e) {
+    openPopup();
+  }
+
+  closeBtn.addEventListener("click", closePopup);
+  overlay.querySelector(".daily-summary-backdrop").addEventListener("click", closePopup);
+}
 
 const gameButtons = document.querySelectorAll(".game-button");
 

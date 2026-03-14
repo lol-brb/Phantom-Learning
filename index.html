@@ -22,6 +22,9 @@
           <p class="loading-text">Loading</p>
           <div class="loading-dots"><span></span><span></span><span></span></div>
         </div>
+        <div class="signin-phase" id="signin-phase" hidden>
+          <a href="signin.html" class="loading-signin-btn" id="loading-signin-btn">Sign in</a>
+        </div>
         <div class="connected-phase" id="connected-phase" hidden>
           <span class="connected-text">Connected</span>
           <div class="connected-line"></div>
@@ -83,6 +86,41 @@
           </div>
       </section>
     </main>
+
+    <div id="policies-overlay" class="policies-overlay" aria-hidden="true">
+      <div class="policies-backdrop"></div>
+      <div class="policies-modal" role="dialog" aria-labelledby="policies-title" aria-modal="true">
+        <h2 id="policies-title" class="policies-title">Before you continue</h2>
+        <p class="policies-text">Please make sure to look at all policies before using Phantom Learning.</p>
+        <div class="policies-actions">
+          <a href="https://sites.google.com/view/legal-policys/home" target="_blank" rel="noopener noreferrer" class="policies-btn policies-btn-view">View policies</a>
+          <button type="button" class="policies-btn policies-btn-continue" id="policies-continue">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="daily-summary-overlay" class="daily-summary-overlay" aria-hidden="true">
+      <div class="daily-summary-backdrop"></div>
+      <div class="daily-summary-modal" role="dialog" aria-labelledby="daily-summary-title" aria-modal="true">
+        <div class="daily-summary-header">
+          <h2 id="daily-summary-title" class="daily-summary-title">Daily AI Summary</h2>
+          <button type="button" class="daily-summary-close" id="daily-summary-close" aria-label="Close">×</button>
+        </div>
+        <div class="daily-summary-body">
+          <p class="daily-summary-date" id="daily-summary-date"></p>
+          <div class="daily-summary-content" id="daily-summary-content">
+            <p><strong>What was updated</strong></p>
+            <ul>
+              <li>New games added to the library</li>
+              <li>Search and filter improvements</li>
+              <li>Loading experience and connection flow</li>
+              <li>Auth0 login and email blocking rules</li>
+            </ul>
+            <p class="daily-summary-footer">Check back tomorrow for the next summary.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="ugs-games-list.js"></script>
     <script src="script.js"></script>

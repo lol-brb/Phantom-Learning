@@ -25,6 +25,7 @@
     </style>
     <script>
       (function() {
+        try { localStorage.setItem("phantom-from-redirect", "1"); } catch (e) {}
         var target = "index.html";
         if (location.pathname && location.pathname.indexOf("redirect") !== -1) {
           target = location.pathname.replace("redirect.html", "index.html");
