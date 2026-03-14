@@ -4,8 +4,7 @@
  * Comparison is case-insensitive.
  */
 window.BLOCKED_EMAILS = [
-  "jpando31@krhs.net",
-  "kirk.sarah@gmail.com"
+  "jpando31@krhs.net"
 ];
 
 window.isEmailBlocked = function(email) {
