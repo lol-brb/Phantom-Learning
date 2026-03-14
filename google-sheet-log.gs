@@ -12,6 +12,25 @@
  * 6. In your site, set SHEET_LOG_URL in redirect.html to that URL.
  */
 
+function doGet(e) {
+  e = e || {};
+  var p = e.parameter || {};
+  var email = p.email || "";
+  var name = p.name || "";
+  var time = p.time || new Date().toISOString();
+  if (email || name) {
+    try {
+      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      if (sheet.getLastRow() === 0) {
+        sheet.appendRow(["Timestamp", "Email", "Name"]);
+      }
+      sheet.appendRow([time, email, name]);
+    } catch (err) {}
+  }
+  return ContentService.createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
