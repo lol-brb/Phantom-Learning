@@ -111,6 +111,13 @@ body.theme-green {
   transition: opacity 0.5s ease;
 }
 
+#loading-screen .loading-phase[hidden],
+#loading-screen .connected-phase[hidden] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 .loading-phase.loading-fade-out {
   opacity: 0;
   pointer-events: none;
@@ -157,39 +164,6 @@ body.theme-green {
 @keyframes loading-dot {
   0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
   40% { transform: scale(1); opacity: 1; }
-}
-
-.signin-phase {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  transition: opacity 0.4s ease;
-}
-
-.loading-signin-btn {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: #0f172a;
-  background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
-  border: none;
-  border-radius: 12px;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.loading-signin-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5);
 }
 
 .connected-phase {
@@ -918,5 +892,138 @@ kbd {
   .games-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ——— Sign-in page (index) — on theme with main site ——— */
+body.signin-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.signin-page .signin-wrap {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.signin-page .title-phantom {
+  margin-bottom: 1.5rem;
+}
+
+.signin-page .signin-card {
+  backdrop-filter: blur(26px) saturate(140%);
+  background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.95),
+      rgba(15, 23, 42, 0.78)
+    ),
+    radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.12), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.08), transparent 55%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-strong), 0 0 0 1px rgba(148, 163, 184, 0.08);
+  padding: 2rem 1.75rem;
+  color: var(--text);
+}
+
+.signin-page .signin-card .action-text {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.signin-page .signin-card .button.login {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signin-page .signin-card .button.login:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5);
+}
+
+.signin-page .signin-card .button.logout {
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  background: rgba(148, 163, 184, 0.2);
+  color: var(--text);
+  border: 1px solid var(--border-subtle);
+}
+
+.signin-page .signin-loading-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.signin-page #loading.loading-state,
+.signin-page #error.error-state {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--text);
+}
+
+.signin-page .error-state {
+  background: rgba(197, 48, 48, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.signin-page .logged-in-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.signin-page .logged-in-message {
+  font-size: 1rem;
+  color: #68d391;
+  font-weight: 600;
+}
+
+.signin-page .profile-section-title {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+
+.signin-page .profile-card {
+  padding: 0.5rem 0;
+}
+
+.signin-page .profile-card .profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+}
+
+.signin-page .profile-card .profile-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.signin-page .profile-card .profile-email {
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 

@@ -27,13 +27,18 @@
 
   function showEl(id) {
     loading.style.display = "none";
+    loading.style.visibility = "hidden";
     error.style.display = "none";
     app.style.display = "none";
-    if (id === "loading") loading.style.display = "block";
-    else if (id === "error") {
+    if (id === "loading") {
+      loading.style.display = "block";
+      loading.style.visibility = "visible";
+    } else if (id === "error") {
       error.style.display = "block";
     } else {
       app.style.display = "flex";
+      loading.style.display = "none";
+      loading.style.visibility = "hidden";
     }
   }
 

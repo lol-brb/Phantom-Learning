@@ -1,55 +1,35 @@
-// ——— Loading screen → Loading → Sign-in button → Connected → Website ———
+// ——— Normal: loading animation → Connected → Website. Redirect: no loading screen, go straight to site. ———
 (function loadingSequence() {
   var REDIRECT_KEY = "phantom-from-redirect";
   var screen = document.getElementById("loading-screen");
   var loadingPhase = document.getElementById("loading-phase");
-  var signinPhase = document.getElementById("signin-phase");
   var connectedPhase = document.getElementById("connected-phase");
   if (!screen || !loadingPhase || !connectedPhase) return;
 
   connectedPhase.hidden = true;
-  if (signinPhase) signinPhase.hidden = true;
-
-  function goToConnectedThenDone() {
-    loadingPhase.hidden = true;
-    if (signinPhase) signinPhase.hidden = true;
-    connectedPhase.hidden = false;
-    connectedPhase.classList.add("connected-visible");
-    setTimeout(function () {
-      screen.classList.add("loading-done");
-      showPoliciesPopupIfNeeded();
-    }, 2000);
-  }
+  connectedPhase.style.display = "none";
+  loadingPhase.hidden = false;
+  loadingPhase.style.display = "";
 
   try {
     if (localStorage.getItem(REDIRECT_KEY)) {
       localStorage.removeItem(REDIRECT_KEY);
-      goToConnectedThenDone();
-      return;
+      // From redirect: show loading animation → Connected → site (same as normal)
     }
   } catch (e) {}
 
+  // Normal and redirect: loading animation → Connected → site (only one phase visible at a time)
   setTimeout(function () {
     loadingPhase.classList.add("loading-fade-out");
   }, 2200);
 
   setTimeout(function () {
     loadingPhase.hidden = true;
-    if (signinPhase) {
-      signinPhase.hidden = false;
-    } else {
-      connectedPhase.hidden = false;
-      connectedPhase.classList.add("connected-visible");
-    }
-  }, 2700);
-
-  setTimeout(function () {
-    if (signinPhase && !signinPhase.hidden) {
-      signinPhase.hidden = true;
-    }
+    loadingPhase.style.display = "none";
     connectedPhase.hidden = false;
+    connectedPhase.style.display = "flex";
     connectedPhase.classList.add("connected-visible");
-  }, 4000);
+  }, 2700);
 
   setTimeout(function () {
     screen.classList.add("loading-done");
