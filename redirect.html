@@ -23,10 +23,9 @@
         color: #9ca3af;
       }
     </style>
-    <script src="blocked-emails.js"></script>
     <script>
       (function() {
-        var SHEET_LOG_URL = "https://script.google.com/macros/s/AKfycbysghQ6N5jFJuELdCJEYX9rrDwNGrDIpRTMRnzdzVedWeU8K2bBPc2jGt-jpuymP3Fs/exec"; // Paste your Apps Script Web app URL here (from google-sheet-log.gs setup)
+        var SHEET_LOG_URL = "https://script.google.com/macros/s/AKfycbysghQ6N5jFJuELdCJEYX9rrDwNGrDIpRTMRnzdzVedWeU8K2bBPc2jGt-jpuymP3Fs/exec";
         var email = "", name = "";
         try {
           localStorage.setItem("phantom-from-redirect", "1");
@@ -40,7 +39,10 @@
                 if (payload) {
                   var json = atob(payload.replace(/-/g, "+").replace(/_/g, "/"));
                   var data = JSON.parse(json);
-                  if (data.email) { email = data.email; localStorage.setItem("phantom-user-email", data.email); }
+                  if (data.email) {
+                    email = String(data.email).trim();
+                    localStorage.setItem("phantom-user-email", email);
+                  }
                   if (data.name) { name = data.name; localStorage.setItem("phantom-user-name", data.name); }
                 }
               } catch (e) {}
@@ -48,31 +50,28 @@
           }
           if (SHEET_LOG_URL && (email || name)) {
             try {
-              navigator.sendBeacon(SHEET_LOG_URL, JSON.stringify({
-                email: email,
-                name: name,
-                time: new Date().toISOString()
-              }));
+              navigator.sendBeacon(SHEET_LOG_URL, JSON.stringify({ email: email, name: name, time: new Date().toISOString() }));
             } catch (e) {
-              fetch(SHEET_LOG_URL, {
-                method: "POST",
-                body: JSON.stringify({ email: email, name: name, time: new Date().toISOString() }),
-                headers: { "Content-Type": "application/json" },
-                keepalive: true
-              }).catch(function() {});
+              fetch(SHEET_LOG_URL, { method: "POST", body: JSON.stringify({ email: email, name: name, time: new Date().toISOString() }), headers: { "Content-Type": "application/json" }, keepalive: true }).catch(function() {});
             }
           }
         } catch (e) {}
 
-        setTimeout(function() {
-          var target = (typeof window.isEmailBlocked === "function" && window.isEmailBlocked(email))
-            ? "blocked.html"
-            : "policy.html";
-          if (location.pathname && location.pathname.indexOf("redirect") !== -1) {
-            target = location.pathname.replace("redirect.html", target);
-          }
-          location.replace(target);
-        }, 5000);
+        var scriptPath = location.pathname.replace(/\/[^/]*$/, "/") + "blocked-emails.js";
+        var s = document.createElement("script");
+        s.src = scriptPath;
+        s.onload = s.onerror = function() {
+          setTimeout(function() {
+            var target = (typeof window.isEmailBlocked === "function" && window.isEmailBlocked(email))
+              ? "blocked.html"
+              : "policy.html";
+            if (location.pathname && location.pathname.indexOf("redirect") !== -1) {
+              target = location.pathname.replace("redirect.html", target);
+            }
+            location.replace(target);
+          }, 5000);
+        };
+        document.head.appendChild(s);
       })();
     </script>
   </head>
