@@ -4,7 +4,11 @@
  * Comparison is case-insensitive.
  */
 window.BLOCKED_EMAILS = [
-  "jpando31@krhs.net"
+  "jpando31@krhs.net",
+  "reldred31@krhs.net",
+  "chickenbottom31@krhs.net",
+  "marcusalleyne20134832@gmail.com",
+  "rmolinet31@krhs.net"
 ];
 
 window.isEmailBlocked = function(email) {
