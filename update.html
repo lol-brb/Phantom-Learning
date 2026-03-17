@@ -58,7 +58,7 @@
         var today = new Date().toDateString();
         if (dateEl) dateEl.textContent = "Summary for " + today;
         if (typeof window.DAILY_CHANGELOG !== "undefined") {
-          var items = window.DAILY_CHANGELOG[today] || null;
+          var items = window.DAILY_CHANGELOG[today] || window.DAILY_CHANGELOG["_latest"] || null;
           if (items && items.length) {
             changesEl.innerHTML = "<ul>" + items.map(function(s) { return "<li>" + s + "</li>"; }).join("") + "</ul>";
           } else {
