@@ -46,16 +46,25 @@
           updating = true;
           var screen = document.getElementById("loading-screen");
           if (screen) {
-            var text = screen.querySelector(".loading-text");
-            if (text) text.textContent = "Updating…";
             screen.classList.remove("loading-done");
             document.body.classList.remove("loading-complete");
-            screen.style.opacity = "";
-            screen.style.visibility = "visible";
+            screen.style.cssText = "opacity:1;visibility:visible;pointer-events:auto;transition:none;";
+            var loadingPhase = document.getElementById("loading-phase");
+            var connectedPhase = screen.querySelector(".connected-phase");
+            if (loadingPhase) {
+              loadingPhase.hidden = false;
+              loadingPhase.style.display = "";
+              var text = loadingPhase.querySelector(".loading-text");
+              if (text) text.textContent = "Updating…";
+            }
+            if (connectedPhase) {
+              connectedPhase.hidden = true;
+              connectedPhase.style.display = "none";
+            }
           }
           setTimeout(function() {
             location.replace(signinUrl);
-          }, 1500);
+          }, 2000);
         }
 
         var currentVersion = null;
@@ -78,14 +87,13 @@
         document.documentElement.classList.add("block-check-pending");
         loadBlockList(function() {
           document.documentElement.classList.remove("block-check-pending");
-          // Capture current version, then start polling for updates
           loadVersion(function(v) {
             currentVersion = v;
           });
-          setInterval(function() {
+          function checkForUpdate() {
             if (updating) return;
             loadVersion(function(v) {
-              if (!currentVersion) {
+              if (currentVersion == null) {
                 currentVersion = v;
                 return;
               }
@@ -93,9 +101,10 @@
                 showUpdatingAndGoToSignin();
               }
             });
-            // Also keep block list fresh in case someone is newly blocked
             loadBlockList();
-          }, 60000);
+          }
+          setTimeout(checkForUpdate, 12000);
+          setInterval(checkForUpdate, 60000);
         });
 
         // Safety: never keep the page hidden forever

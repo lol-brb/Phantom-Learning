@@ -50,21 +50,26 @@
         </div>
       </div>
     </div>
-    <script src="update-changelog.js"></script>
     <script>
       (function() {
-        var dateEl = document.getElementById("daily-summary-date");
-        var changesEl = document.getElementById("daily-summary-changes");
-        var today = new Date().toDateString();
-        if (dateEl) dateEl.textContent = "Summary for " + today;
-        if (typeof window.DAILY_CHANGELOG !== "undefined") {
-          var items = window.DAILY_CHANGELOG[today] || window.DAILY_CHANGELOG["_latest"] || null;
-          if (items && items.length) {
-            changesEl.innerHTML = "<ul>" + items.map(function(s) { return "<li>" + s + "</li>"; }).join("") + "</ul>";
-          } else {
-            changesEl.textContent = "No new games or features added today.";
+        var base = location.pathname.replace(/\/[^/]*$/, "/") || "/";
+        var s = document.createElement("script");
+        s.src = base + "update-changelog.js?v=" + Date.now();
+        s.onload = function() {
+          var dateEl = document.getElementById("daily-summary-date");
+          var changesEl = document.getElementById("daily-summary-changes");
+          var today = new Date().toDateString();
+          if (dateEl) dateEl.textContent = "Summary for " + today;
+          if (typeof window.DAILY_CHANGELOG !== "undefined") {
+            var items = window.DAILY_CHANGELOG[today] || window.DAILY_CHANGELOG["_latest"] || null;
+            if (items && Array.isArray(items) && items.length) {
+              changesEl.innerHTML = "<ul>" + items.map(function(s) { return "<li>" + String(s) + "</li>"; }).join("") + "</ul>";
+            } else {
+              changesEl.textContent = "No new games or features added today.";
+            }
           }
-        }
+        };
+        document.head.appendChild(s);
       })();
     </script>
   </body>
