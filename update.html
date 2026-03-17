@@ -58,10 +58,14 @@
         s.onload = function() {
           var dateEl = document.getElementById("daily-summary-date");
           var changesEl = document.getElementById("daily-summary-changes");
-          var today = new Date().toDateString();
+          var now = new Date();
+          var today = now.toDateString();
+          var tomorrow = new Date(now);
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          tomorrow = tomorrow.toDateString();
           if (dateEl) dateEl.textContent = "Summary for " + today;
           if (typeof window.DAILY_CHANGELOG !== "undefined") {
-            var items = window.DAILY_CHANGELOG[today] || window.DAILY_CHANGELOG["_latest"] || null;
+            var items = window.DAILY_CHANGELOG[today] || window.DAILY_CHANGELOG[tomorrow] || null;
             if (items && Array.isArray(items) && items.length) {
               changesEl.innerHTML = "<ul>" + items.map(function(s) { return "<li>" + String(s) + "</li>"; }).join("") + "</ul>";
             } else {

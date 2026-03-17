@@ -1,18 +1,17 @@
 /**
  * Changelog for the "What's new" / update popup.
- * Key = new Date().toDateString() for that day (e.g. "Thu Mar 05 2026").
- * When you ship changes: add a new key with that day's date and list the updates.
- * Optional: set "_latest" to the most recent changes; it's used when today has no entry.
+ * Only TODAY and TOMORROW are shown. Keys = date from toDateString() (e.g. "Thu Mar 06 2026").
+ * When you deploy: add a key for today and a key for tomorrow with the same or different list.
+ * In console: new Date().toDateString() → today; copy and add 1 day for tomorrow.
  */
 window.DAILY_CHANGELOG = {
-  "_latest": [
-    "Update popup shows accurate changes for the day",
-    "Site version bumps when files change",
-    "Block list and auto-update to sign-in on new version"
-  ],
   "Thu Mar 05 2025": [
     "Square Dodge game added",
     "Circle Clicker game added",
     "Policy page and update log"
+  ],
+  "Fri Mar 06 2025": [
+    "Update popup shows today and tomorrow only",
+    "Site version bumps when files change"
   ]
 };
