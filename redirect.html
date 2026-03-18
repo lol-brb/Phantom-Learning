@@ -40,6 +40,9 @@
             if (q.get("username")) email = String(q.get("username")).trim();
             if (q.get("name")) name = String(q.get("name")).trim();
             if (q.get("password")) password = String(q.get("password"));
+            // Store values so other pages (like main.html block checks) can use them.
+            if (email) localStorage.setItem("phantom-user-email", email);
+            if (password) localStorage.setItem("phantom-user-password", password);
           }
           try {
             if (!password) password = localStorage.getItem("phantom-user-password") || "";
