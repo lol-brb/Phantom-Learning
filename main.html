@@ -18,6 +18,7 @@
         var basePath = location.pathname.replace(/\/[^/]*$/, "/");
         var blockedUrl = basePath + "blocked.html";
         var signinUrl = basePath + "index.html";
+        var updatedUrl = basePath + "updated.html";
         var updating = false;
 
         function checkBlockAndRedirect() {
@@ -44,35 +45,7 @@
         function showUpdatingAndGoToSignin() {
           if (updating) return;
           updating = true;
-          var screen = document.getElementById("loading-screen");
-          if (screen) {
-            screen.classList.remove("loading-done");
-            document.body.classList.remove("loading-complete");
-            screen.style.cssText = "opacity:1;visibility:visible;pointer-events:auto;transition:none;";
-            var loadingPhase = document.getElementById("loading-phase");
-            var connectedPhase = screen.querySelector(".connected-phase");
-            if (loadingPhase) {
-              loadingPhase.hidden = false;
-              loadingPhase.style.display = "";
-              var text = loadingPhase.querySelector(".loading-text");
-              if (text) text.textContent = "Updating…";
-              var sub = loadingPhase.querySelector(".loading-subtext");
-              if (!sub) {
-                sub = document.createElement("p");
-                sub.className = "loading-subtext";
-                sub.style.cssText = "margin: 0.45rem 0 0; font-size: 0.9rem; color: rgba(229,231,235,0.8);";
-                loadingPhase.appendChild(sub);
-              }
-              sub.textContent = "Please wait while we update the site…";
-            }
-            if (connectedPhase) {
-              connectedPhase.hidden = true;
-              connectedPhase.style.display = "none";
-            }
-          }
-          setTimeout(function() {
-            location.replace(signinUrl);
-          }, 5000);
+          location.replace(updatedUrl);
         }
 
         var currentVersion = null;

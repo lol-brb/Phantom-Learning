@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        var path = location.pathname.replace(/\/[^/]*$/, '/') || '/';
+        document.write('<base href="' + location.origin + path + '">');
+      })();
+    </script>
+    <title>Phantom Learning</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%234f46e5' rx='6'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='bold'>P</text></svg>" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .loading-subtext {
+        margin: 0.45rem 0 0;
+        font-size: 0.9rem;
+        color: rgba(229,231,235,0.8);
+      }
+    </style>
+  </head>
+  <body class="loading-active">
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-screen-bg"></div>
+      <div class="loading-screen-center">
+        <div class="loading-phase" id="loading-phase">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Updating…</p>
+          <p class="loading-subtext">Please wait while we update the site…</p>
+          <div class="loading-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+        <div class="connected-phase" id="connected-phase" hidden>
+          <span class="connected-text">Connected</span>
+          <div class="connected-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        var basePath = location.pathname.replace(/\/[^/]*$/, "/");
+        var signinUrl = basePath + "index.html";
+        setTimeout(function() {
+          location.replace(signinUrl);
+        }, 5000);
+      })();
+    </script>
+  </body>
+</html>
+
