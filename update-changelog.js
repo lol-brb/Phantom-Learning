@@ -6,7 +6,7 @@
 window.DAILY_CHANGELOG = {
   "Thu Mar 19 2025": [
     "Website revamp",
-    "Site version 1.1.5 — bump for this release",
+    "Site version 1.1.6 — lighter FX & faster splash/redirect; study portal browser tab titled Phantom Learning",
     "Directory category tabs (All, Most popular, Shooter, Car & driving, Sports, Arcade); UGS entries sorted by inferred category from each title",
     "Study view: homework-style decoy page; hold the purple P badge ~1s to return — hints under Study view & in the sidebar",
     "Main sidebar simplified (Explore removed); bento-style directory cards; scroll fixes for the glass shell",
@@ -14,7 +14,7 @@ window.DAILY_CHANGELOG = {
   ],
   "Fri Mar 20 2025": [
     "Website revamp",
-    "Site version 1.1.5 — bump for this release",
+    "Site version 1.1.6 — lighter FX & faster splash/redirect; study portal browser tab titled Phantom Learning",
     "Directory category tabs (All, Most popular, Shooter, Car & driving, Sports, Arcade); UGS entries sorted by inferred category from each title",
     "Study view: homework-style decoy page; hold the purple P badge ~1s to return — hints under Study view & in the sidebar",
     "Main sidebar simplified (Explore removed); bento-style directory cards; scroll fixes for the glass shell",
@@ -22,7 +22,7 @@ window.DAILY_CHANGELOG = {
   ],
   "Thu Mar 19 2026": [
     "Website revamp",
-    "Site version 1.1.5 — bump for this release",
+    "Site version 1.1.6 — lighter FX & faster splash/redirect; study portal browser tab titled Phantom Learning",
     "Directory category tabs (All, Most popular, Shooter, Car & driving, Sports, Arcade); UGS entries sorted by inferred category from each title",
     "Study view: homework-style decoy page; hold the purple P badge ~1s to return — hints under Study view & in the sidebar",
     "Main sidebar simplified (Explore removed); bento-style directory cards; scroll fixes for the glass shell",
@@ -30,7 +30,23 @@ window.DAILY_CHANGELOG = {
   ],
   "Fri Mar 20 2026": [
     "Website revamp",
-    "Site version 1.1.5 — bump for this release",
+    "Site version 1.1.6 — lighter FX & faster splash/redirect; study portal browser tab titled Phantom Learning",
+    "Directory category tabs (All, Most popular, Shooter, Car & driving, Sports, Arcade); UGS entries sorted by inferred category from each title",
+    "Study view: homework-style decoy page; hold the purple P badge ~1s to return — hints under Study view & in the sidebar",
+    "Main sidebar simplified (Explore removed); bento-style directory cards; scroll fixes for the glass shell",
+    "New loading screen (orbit + progress); update page “What’s new” shows these notes today and tomorrow"
+  ],
+  "Sat Mar 21 2025": [
+    "Website revamp",
+    "Site version 1.1.6 — lighter FX & faster splash/redirect; study portal browser tab titled Phantom Learning",
+    "Directory category tabs (All, Most popular, Shooter, Car & driving, Sports, Arcade); UGS entries sorted by inferred category from each title",
+    "Study view: homework-style decoy page; hold the purple P badge ~1s to return — hints under Study view & in the sidebar",
+    "Main sidebar simplified (Explore removed); bento-style directory cards; scroll fixes for the glass shell",
+    "New loading screen (orbit + progress); update page “What’s new” shows these notes today and tomorrow"
+  ],
+  "Sat Mar 21 2026": [
+    "Website revamp",
+    "Site version 1.1.6 — lighter FX & faster splash/redirect; study portal browser tab titled Phantom Learning",
     "Directory category tabs (All, Most popular, Shooter, Car & driving, Sports, Arcade); UGS entries sorted by inferred category from each title",
     "Study view: homework-style decoy page; hold the purple P badge ~1s to return — hints under Study view & in the sidebar",
     "Main sidebar simplified (Explore removed); bento-style directory cards; scroll fixes for the glass shell",

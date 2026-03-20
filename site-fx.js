@@ -9,13 +9,14 @@
     typeof window.matchMedia === "function" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
   var w = 0;
   var h = 0;
   var particles = [];
   var mouse = { x: -9999, y: -9999 };
   var mouseActive = false;
   var tick = 0;
+  var paused = false;
 
   var PALETTE = [
     "rgba(129,140,248,0.95)",
@@ -36,7 +37,7 @@
     canvas.width = (w * dpr) | 0;
     canvas.height = (h * dpr) | 0;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var count = reduced ? 42 : Math.min(140, Math.max(70, ((w * h) / 14000) | 0));
+    var count = reduced ? 28 : Math.min(52, Math.max(30, ((w * h) / 26000) | 0));
     particles = [];
     for (var i = 0; i < count; i++) {
       particles.push({
@@ -66,12 +67,22 @@
   window.addEventListener("mouseleave", onLeave, { passive: true });
   resize();
 
-  var linkDist = reduced ? 90 : 118;
+  var linkDist = reduced ? 78 : 100;
   var linkDistSq = linkDist * linkDist;
-  var mouseR = reduced ? 100 : 160;
+  var mouseR = reduced ? 100 : 140;
   var mouseRSq = mouseR * mouseR;
 
+  document.addEventListener(
+    "visibilitychange",
+    function () {
+      paused = document.hidden;
+      if (!paused) requestAnimationFrame(step);
+    },
+    { passive: true }
+  );
+
   function step() {
+    if (paused) return;
     tick++;
     ctx.clearRect(0, 0, w, h);
     if (!w || !h) {
@@ -80,6 +91,7 @@
     }
 
     var i, j, p, q, dx, dy, d2, alpha, pulse;
+    var drawLinks = !reduced && tick % 2 === 0;
 
     for (i = 0; i < particles.length; i++) {
       p = particles[i];
@@ -105,7 +117,7 @@
       p.tw += reduced ? 0.01 : 0.026;
     }
 
-    if (!reduced) {
+    if (drawLinks) {
       ctx.lineWidth = 0.55;
       for (i = 0; i < particles.length; i++) {
         p = particles[i];
@@ -137,7 +149,7 @@
       ctx.globalAlpha = 1;
     }
 
-    if (!reduced && tick % 18 === 0) {
+    if (!reduced && tick % 28 === 0) {
       var sx = (Math.random() * w) | 0;
       var sy = (Math.random() * h) | 0;
       var g = ctx.createRadialGradient(sx, sy, 0, sx, sy, 120);

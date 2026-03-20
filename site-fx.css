@@ -24,8 +24,8 @@
     radial-gradient(ellipse 50% 45% at 85% 15%, rgba(129, 140, 248, 0.16), transparent 50%),
     radial-gradient(ellipse 60% 50% at 50% 100%, rgba(79, 70, 229, 0.12), transparent 55%),
     radial-gradient(ellipse 40% 35% at 70% 60%, rgba(14, 165, 233, 0.08), transparent 45%);
-  filter: blur(42px);
-  animation: fx-aurora-drift 22s ease-in-out infinite alternate;
+  filter: blur(28px);
+  animation: fx-aurora-drift 28s ease-in-out infinite alternate;
 }
 
 @keyframes fx-aurora-drift {
@@ -41,7 +41,7 @@
     linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 20%, transparent 70%);
-  animation: fx-grid-pan 80s linear infinite;
+  animation: fx-grid-pan 120s linear infinite;
 }
 
 @keyframes fx-grid-pan {
@@ -84,9 +84,9 @@
     rgba(79, 70, 229, 0.07) 40%,
     transparent 100%
   );
-  filter: blur(28px);
-  opacity: 0.75;
-  animation: fx-beam-pulse 10s ease-in-out infinite alternate;
+  filter: blur(18px);
+  opacity: 0.7;
+  animation: fx-beam-pulse 14s ease-in-out infinite alternate;
 }
 
 @keyframes fx-beam-pulse {

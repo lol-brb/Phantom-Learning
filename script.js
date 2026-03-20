@@ -21,7 +21,7 @@
   // Normal and redirect: loading animation → Connected → site (only one phase visible at a time)
   setTimeout(function () {
     loadingPhase.classList.add("loading-fade-out");
-  }, 2200);
+  }, 1300);
 
   setTimeout(function () {
     loadingPhase.hidden = true;
@@ -29,13 +29,13 @@
     connectedPhase.hidden = false;
     connectedPhase.style.display = "flex";
     connectedPhase.classList.add("connected-visible");
-  }, 2700);
+  }, 1650);
 
   setTimeout(function () {
     screen.classList.add("loading-done");
     document.body.classList.add("loading-complete");
     markPopupsDone();
-  }, 4700);
+  }, 3000);
 })();
 
 // ——— Show signed-in email on main page (from Auth0 redirect) ———
